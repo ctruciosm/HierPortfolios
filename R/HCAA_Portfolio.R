@@ -1,3 +1,12 @@
+#' Hierarchical Clutering-Bases Asset Allocation
+#'
+#' Performs the Hierarchical Clustering-Bases Asset Allocation portfolio strategy proposed by Raffinot (2017). Several linkage methods for the hierarchical clustering can be used, by default the `single` linkage is used.
+#'
+#' @param covar Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into distance matrix.
+#' @param clustering.method Linkage method used in the hierarchical clustering. Allowed options are `single`, `complete`, `average` or `ward`. Default option is `single`.
+#' @return portfolio weights
+#' @seealso `HRP_porfolio` and `HERC_Portfolio`
+#' @export
 HCAA_Portfolio = function(covar, clustering.method = "ward"){
   if (clustering.method %in% c("single", "complete", "average", "ward")) {
     if (clustering.method == "ward") {
@@ -6,17 +15,17 @@ HCAA_Portfolio = function(covar, clustering.method = "ward"){
   } else {
     return("ERROR: clustering.method argument only supports 'single', 'complete', 'average' or 'ward' options")
   }
-  corre <- cov2cor(covar)
+  corre <- stats::cov2cor(covar)
   distance <- sqrt(0.5 * (1 - corre))
-  euclidean_distance <- dist(distance, method = "euclidean", diag = TRUE, upper = TRUE, p = 2)
+  euclidean_distance <- stats::dist(distance, method = "euclidean", diag = TRUE, upper = TRUE, p = 2)
   clustering <- fastcluster::hclust(euclidean_distance , method = clustering.method, members = NULL)
   n_cols <- ncol(corre)
-  fun_clus_num <- function(x,k) list(cluster = cutree(fastcluster::hclust(as.dist(x) , method = "ward.D2", members = NULL), k)) 
-  gap <- clusGap(as.matrix(euclidean_distance), FUN = fun_clus_num, K.max = floor(n_cols/2), B = 100)
-  n_clusters <- maxSE(gap$Tab[,"gap"], gap$Tab[,"SE.sim"], method = "Tibs2001SEmax")
+  fun_clus_num <- function(x,k) list(cluster = stats::cutree(fastcluster::hclust(stats::as.dist(x) , method = "ward.D2", members = NULL), k))
+  gap <- cluster::clusGap(as.matrix(euclidean_distance), FUN = fun_clus_num, K.max = floor(n_cols/2), B = 100)
+  n_clusters <- cluster::maxSE(gap$Tab[,"gap"], gap$Tab[,"SE.sim"], method = "Tibs2001SEmax")
   n_clusters <- max(2, n_clusters)
-  elements_in_cluster <- matrix(cutree(clustering, 2:n_clusters), ncol = n_clusters - 1)
-  # Using cluster's hierarchy 
+  elements_in_cluster <- matrix(stats::cutree(clustering, 2:n_clusters), ncol = n_clusters - 1)
+  # Using cluster's hierarchy
   indexa <- elements_in_cluster[,1] == 1
   indexb <- elements_in_cluster[,1] == 2
   weights <- rep(1, n_cols)
@@ -34,7 +43,7 @@ HCAA_Portfolio = function(covar, clustering.method = "ward"){
           weights[indexa] <- weights[indexa]/2
           weights[indexb] <- weights[indexb]/2
           break
-        } 
+        }
       }
     }
   }
