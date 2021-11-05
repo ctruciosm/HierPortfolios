@@ -2,21 +2,41 @@
 % Please edit documentation in R/HCAA_Portfolio.R
 \name{HCAA_Portfolio}
 \alias{HCAA_Portfolio}
-\title{Hierarchical Clutering-Bases Asset Allocation}
+\alias{HCAA}
+\title{Hierarchical Clustering-Bases Asset Allocation}
 \usage{
-HCAA_Portfolio(covar, clustering.method = "ward")
+HCAA_Portfolio(
+  covar,
+  clustering.method = "ward",
+  graph = FALSE,
+  clusters = NULL
+)
 }
 \arguments{
 \item{covar}{Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into distance matrix.}
 
-\item{clustering.method}{Linkage method used in the hierarchical clustering. Allowed options are `single`, `complete`, `average` or `ward`. Default option is `single`.}
+\item{clustering.method}{Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "ward".}
+
+\item{graph}{To plot de dendogram set this value to TRUE. By default this value is equal to FALSE.}
+
+\item{clusters}{Numbers of clusters. If NULL (default), the gap index is applied.}
 }
 \value{
-portfolio weights
+portfolio weights.
 }
 \description{
-Performs the Hierarchical Clustering-Bases Asset Allocation portfolio strategy proposed by Raffinot (2017). Several linkage methods for the hierarchical clustering can be used, by default the `single` linkage is used.
+Performs the Hierarchical Clustering-Bases Asset Allocation portfolio strategy proposed by Raffinot (2017). Several linkage methods for the hierarchical clustering can be used, by default the "ward" linkage is used. The numbers of clusters is selected using the Gap index of Tibshirani et al. (2001).
+}
+\examples{
+covar <- cov(daily_returns)
+HCAA_Portfolio(covar)
+}
+\references{
+Raffinot, Thomas. "Hierarchical clustering-based asset allocation." The Journal of Portfolio Management 44.2 (2017): 89-99.
+
+Tibshirani, Robert, Guenther Walther, and Trevor Hastie. "Estimating the number of clusters in a data set via the gap statistic." Journal of the Royal Statistical Society: Series B (Statistical Methodology) 63.2 (2001): 411-423.
 }
 \seealso{
-`HRP_porfolio` and `HERC_Portfolio`
+\code{HRP_porfolio} and \code{HERC_Portfolio}
 }
+\keyword{HCAA}

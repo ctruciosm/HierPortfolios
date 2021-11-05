@@ -1,13 +1,22 @@
-#' Hierarchical Clutering-Bases Asset Allocation
+#' Hierarchical Clustering-Bases Asset Allocation
 #'
-#' Performs the Hierarchical Clustering-Bases Asset Allocation portfolio strategy proposed by Raffinot (2017). Several linkage methods for the hierarchical clustering can be used, by default the `single` linkage is used.
+#' Performs the Hierarchical Clustering-Bases Asset Allocation portfolio strategy proposed by Raffinot (2017). Several linkage methods for the hierarchical clustering can be used, by default the "ward" linkage is used. The numbers of clusters is selected using the Gap index of Tibshirani et al. (2001).
 #'
 #' @param covar Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into distance matrix.
-#' @param clustering.method Linkage method used in the hierarchical clustering. Allowed options are `single`, `complete`, `average` or `ward`. Default option is `single`.
-#' @return portfolio weights
-#' @seealso `HRP_porfolio` and `HERC_Portfolio`
+#' @param clustering.method Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "ward".
+#' @param graph To plot de dendogram set this value to TRUE. By default this value is equal to FALSE.
+#' @param clusters Numbers of clusters. If NULL (default), the gap index is applied.
+#' @return portfolio weights.
+#' @seealso \code{HRP_porfolio} and \code{HERC_Portfolio}
+#' @references Raffinot, Thomas. "Hierarchical clustering-based asset allocation." The Journal of Portfolio Management 44.2 (2017): 89-99.
+#' @references Tibshirani, Robert, Guenther Walther, and Trevor Hastie. "Estimating the number of clusters in a data set via the gap statistic." Journal of the Royal Statistical Society: Series B (Statistical Methodology) 63.2 (2001): 411-423.
+#' @aliases HCAA
+#' @keywords HCAA
+#' @examples
+#' covar <- cov(daily_returns)
+#' HCAA_Portfolio(covar)
 #' @export
-HCAA_Portfolio = function(covar, clustering.method = "ward"){
+HCAA_Portfolio = function(covar, clustering.method = "ward", graph = FALSE, clusters = NULL) {
   if (clustering.method %in% c("single", "complete", "average", "ward")) {
     if (clustering.method == "ward") {
       clustering.method = "ward.D2"
@@ -20,10 +29,15 @@ HCAA_Portfolio = function(covar, clustering.method = "ward"){
   euclidean_distance <- stats::dist(distance, method = "euclidean", diag = TRUE, upper = TRUE, p = 2)
   clustering <- fastcluster::hclust(euclidean_distance , method = clustering.method, members = NULL)
   n_cols <- ncol(corre)
-  fun_clus_num <- function(x,k) list(cluster = stats::cutree(fastcluster::hclust(stats::as.dist(x) , method = "ward.D2", members = NULL), k))
-  gap <- cluster::clusGap(as.matrix(euclidean_distance), FUN = fun_clus_num, K.max = floor(n_cols/2), B = 100)
-  n_clusters <- cluster::maxSE(gap$Tab[,"gap"], gap$Tab[,"SE.sim"], method = "Tibs2001SEmax")
-  n_clusters <- max(2, n_clusters)
+  if (is.null(clusters)) {
+    fun_clus_num <- function(x,k) list(cluster = stats::cutree(fastcluster::hclust(stats::as.dist(x) , method = "ward.D2", members = NULL), k))
+    gap <- cluster::clusGap(as.matrix(euclidean_distance), FUN = fun_clus_num, K.max = floor(n_cols/2), B = 100)
+    n_clusters <- cluster::maxSE(gap$Tab[,"gap"], gap$Tab[,"SE.sim"], method = "Tibs2001SEmax")
+    n_clusters <- max(2, n_clusters)
+  } else{
+    n_clusters <- clusters
+  }
+  print(sprintf("Number of clusters: %i", n_clusters))
   elements_in_cluster <- matrix(stats::cutree(clustering, 2:n_clusters), ncol = n_clusters - 1)
   # Using cluster's hierarchy
   indexa <- elements_in_cluster[,1] == 1
@@ -51,5 +65,8 @@ HCAA_Portfolio = function(covar, clustering.method = "ward"){
     index <- elements_in_cluster[, n_clusters - 1] == j
     weights[index] <- weights[index]/sum(index)
   }
+  if (graph) plot(clustering, xlab = "", ylab = "", main = "Cluster Dendrogam - HCAA")
+  weights <- data.frame(weights)
+  row.names(weights) <- colnames(covar)
   return(weights)
 }

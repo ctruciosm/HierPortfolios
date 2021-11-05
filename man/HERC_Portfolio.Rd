@@ -2,21 +2,41 @@
 % Please edit documentation in R/HERC_Portfolio.R
 \name{HERC_Portfolio}
 \alias{HERC_Portfolio}
+\alias{HERC}
 \title{Hierarchical Equal Risk Contribution}
 \usage{
-HERC_Portfolio(covar, clustering.method = "ward")
+HERC_Portfolio(
+  covar,
+  clustering.method = "ward",
+  graph = FALSE,
+  clusters = NULL
+)
 }
 \arguments{
 \item{covar}{Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into distance matrix.}
 
-\item{clustering.method}{Linkage method used in the hierarchical clustering. Allowed options are `single`, `complete`, `average` or `ward`. Default option is `single`.}
+\item{clustering.method}{Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "ward".}
+
+\item{graph}{To plot de dendogram set this value to TRUE. By default this value is equal to FALSE.}
+
+\item{clusters}{Numbers of clusters. If NULL (default), the gap index is applied.}
 }
 \value{
-portfolio weights
+portfolio weights.
 }
 \description{
-Performs the Hierarchical Equal Risk Contribution portfolio strategy proposed by Raffinot (2018). Several linkage methods for the hierarchical clustering can be used, by default the `single` linkage is used.
+Performs the Hierarchical Equal Risk Contribution portfolio strategy proposed by Raffinot (2018). Several linkage methods for the hierarchical clustering can be used, by default the "ward" linkage is used. This fuction uses the variance as a measure of risk and the number of clusters is selected using the Gap index of Tibshirani et al. (2001).
+}
+\examples{
+covar <- cov(daily_returns)
+HERC_Portfolio(covar)
+}
+\references{
+Raffinot, Thomas. "The hierarchical equal risk contribution portfolio." Available at SSRN 3237540 (2018).
+
+Tibshirani, Robert, Guenther Walther, and Trevor Hastie. "Estimating the number of clusters in a data set via the gap statistic." Journal of the Royal Statistical Society: Series B (Statistical Methodology) 63.2 (2001): 411-423.
 }
 \seealso{
-`HRP_porfolio` and `HCAA_Portfolio`
+\code{HRP_porfolio} and \code{HCAA_Portfolio}
 }
+\keyword{HERC}

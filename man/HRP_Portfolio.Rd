@@ -2,21 +2,32 @@
 % Please edit documentation in R/HRP_Portfolio.R
 \name{HRP_Portfolio}
 \alias{HRP_Portfolio}
-\title{Hierarchical Risk Parity portfolio}
+\alias{HRP}
+\title{Hierarchical Risk Parity}
 \usage{
-HRP_Portfolio(covar, clustering.method = "single")
+HRP_Portfolio(covar, clustering.method = "single", graph = FALSE)
 }
 \arguments{
 \item{covar}{Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into distance matrix.}
 
-\item{clustering.method}{Linkage method used in the hierarchical clustering. Allowed options are `single`, `complete`, `average` or `ward`. Default option is `single`.}
+\item{clustering.method}{Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "single".}
+
+\item{graph}{To plot de dendogram set this value to TRUE. By default this value is equal to FALSE.}
 }
 \value{
 portfolio weights
 }
 \description{
-Performs the Hierarchical Risk Parity portfolio proposed strategy by De Prado (2016). Several linkage methods for the hierarchical clustering can be used, by default the `single` linkage is used.
+Performs the Hierarchical Risk Parity portfolio proposed strategy by De Prado (2016). Several linkage methods for the hierarchical clustering can be used, by default the "single" linkage is used.
+}
+\examples{
+covar <- cov(daily_returns)
+HRP_Portfolio(covar)
+}
+\references{
+De Prado, Marcos Lopez. "Building diversified portfolios that outperform out of sample." The Journal of Portfolio Management 42.4 (2016): 59-69.
 }
 \seealso{
-`HCAA_porfolio` and `HERC_Portfolio`
+\code{HCAA_porfolio} and \code{HERC_Portfolio}
 }
+\keyword{HRP}
