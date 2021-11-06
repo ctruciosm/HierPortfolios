@@ -1,6 +1,6 @@
-#' Hierarchical Clustering-Bases Asset Allocation
+#' Hierarchical Clustering-Based Asset Allocation
 #'
-#' Performs the Hierarchical Clustering-Bases Asset Allocation portfolio strategy proposed by Raffinot (2017). Several linkage methods for the hierarchical clustering can be used, by default the "ward" linkage is used. The numbers of clusters is selected using the Gap index of Tibshirani et al. (2001).
+#' Performs the Hierarchical Clustering-Based Asset Allocation portfolio strategy proposed by Raffinot (2017). Several linkage methods for the hierarchical clustering can be used, by default the "ward" linkage is used. The numbers of clusters is selected using the Gap index of Tibshirani et al. (2001).
 #'
 #' @param covar Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into a distance matrix.
 #' @param linkage Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "ward".
