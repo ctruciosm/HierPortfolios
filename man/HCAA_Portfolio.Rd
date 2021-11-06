@@ -2,7 +2,7 @@
 % Please edit documentation in R/HCAA_Portfolio.R
 \name{HCAA_Portfolio}
 \alias{HCAA_Portfolio}
-\title{Hierarchical Clustering-Bases Asset Allocation}
+\title{Hierarchical Clustering-Based Asset Allocation}
 \usage{
 HCAA_Portfolio(covar, linkage = "ward", graph = FALSE, clusters = NULL)
 }
@@ -19,7 +19,7 @@ HCAA_Portfolio(covar, linkage = "ward", graph = FALSE, clusters = NULL)
 portfolio weights.
 }
 \description{
-Performs the Hierarchical Clustering-Bases Asset Allocation portfolio strategy proposed by Raffinot (2017). Several linkage methods for the hierarchical clustering can be used, by default the "ward" linkage is used. The numbers of clusters is selected using the Gap index of Tibshirani et al. (2001).
+Performs the Hierarchical Clustering-Based Asset Allocation strategy proposed by Raffinot (2017). Several linkage methods for the hierarchical clustering can be used, by default the "ward" linkage is used. The numbers of clusters is selected using the Gap index of Tibshirani et al. (2001).
 }
 \examples{
 covar <- cov(daily_returns)
