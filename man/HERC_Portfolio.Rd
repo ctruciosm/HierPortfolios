@@ -2,7 +2,6 @@
 % Please edit documentation in R/HERC_Portfolio.R
 \name{HERC_Portfolio}
 \alias{HERC_Portfolio}
-\alias{HERC}
 \title{Hierarchical Equal Risk Contribution}
 \usage{
 HERC_Portfolio(covar, linkage = "ward", graph = FALSE, clusters = NULL)

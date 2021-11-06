@@ -10,7 +10,7 @@
 #' @seealso \code{HRP_porfolio} and \code{HCAA_Portfolio}
 #' @references Raffinot, Thomas. "The hierarchical equal risk contribution portfolio." Available at SSRN 3237540 (2018).
 #' @references Tibshirani, Robert, Guenther Walther, and Trevor Hastie. "Estimating the number of clusters in a data set via the gap statistic." Journal of the Royal Statistical Society: Series B (Statistical Methodology) 63.2 (2001): 411-423.
-#' @aliases HERC
+#' @aliases HERC_Portfolio
 #' @keywords HERC
 #' @examples
 #' covar <- cov(daily_returns)

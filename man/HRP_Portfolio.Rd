@@ -2,7 +2,6 @@
 % Please edit documentation in R/HRP_Portfolio.R
 \name{HRP_Portfolio}
 \alias{HRP_Portfolio}
-\alias{HRP}
 \title{Hierarchical Risk Parity}
 \usage{
 HRP_Portfolio(covar, linkage = "single", graph = FALSE)

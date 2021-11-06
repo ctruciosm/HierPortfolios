@@ -10,7 +10,7 @@
 #' @seealso \code{HRP_porfolio} and \code{HERC_Portfolio}
 #' @references Raffinot, Thomas. "Hierarchical clustering-based asset allocation." The Journal of Portfolio Management 44.2 (2017): 89-99.
 #' @references Tibshirani, Robert, Guenther Walther, and Trevor Hastie. "Estimating the number of clusters in a data set via the gap statistic." Journal of the Royal Statistical Society: Series B (Statistical Methodology) 63.2 (2001): 411-423.
-#' @aliases HCAA
+#' @aliases HCAA_Portfolio
 #' @keywords HCAA
 #' @examples
 #' covar <- cov(daily_returns)

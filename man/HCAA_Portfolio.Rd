@@ -2,7 +2,6 @@
 % Please edit documentation in R/HCAA_Portfolio.R
 \name{HCAA_Portfolio}
 \alias{HCAA_Portfolio}
-\alias{HCAA}
 \title{Hierarchical Clustering-Bases Asset Allocation}
 \usage{
 HCAA_Portfolio(covar, linkage = "ward", graph = FALSE, clusters = NULL)

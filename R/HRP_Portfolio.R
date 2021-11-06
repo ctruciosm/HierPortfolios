@@ -8,7 +8,7 @@
 #' @return portfolio weights
 #' @seealso \code{HCAA_porfolio} and \code{HERC_Portfolio}
 #' @references De Prado, Marcos Lopez. "Building diversified portfolios that outperform out of sample." The Journal of Portfolio Management 42.4 (2016): 59-69.
-#' @aliases HRP
+#' @aliases HRP_Portfolio
 #' @keywords HRP
 #' @examples
 #' covar <- cov(mldp_returns)
