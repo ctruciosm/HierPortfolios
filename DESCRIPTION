@@ -3,7 +3,7 @@ Type: Package
 Title: Hierarchical Clustering-Based Portfolio Allocation Strategies
 Version: 0.1.0
 Author: Carlos Trucios
-Maintainer: Carlos Trucios <ctrucios@gmail.com> <carlos.trucios@facc.ufrj.br>
+Maintainer: Carlos Trucios <ctrucios@gmail.com>
 Description: Machine learning portfolio allocation strategies based on hierarchical clustering methods. 
  The implemented methods are:
   Hierarchical risk parity (De Prado, 2016) <DOI: 10.3905/jpm.2016.42.4.059> and
