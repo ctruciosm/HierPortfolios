@@ -5,19 +5,14 @@
 \alias{HERC}
 \title{Hierarchical Equal Risk Contribution}
 \usage{
-HERC_Portfolio(
-  covar,
-  clustering.method = "ward",
-  graph = FALSE,
-  clusters = NULL
-)
+HERC_Portfolio(covar, linkage = "ward", graph = FALSE, clusters = NULL)
 }
 \arguments{
-\item{covar}{Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into distance matrix.}
+\item{covar}{Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into a distance matrix.}
 
-\item{clustering.method}{Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "ward".}
+\item{linkage}{Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "ward".}
 
-\item{graph}{To plot de dendogram set this value to TRUE. By default this value is equal to FALSE.}
+\item{graph}{To plot de dendrogram set this value to TRUE. By default this value is equal to FALSE.}
 
 \item{clusters}{Numbers of clusters. If NULL (default), the gap index is applied.}
 }

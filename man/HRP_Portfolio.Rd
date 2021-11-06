@@ -5,14 +5,14 @@
 \alias{HRP}
 \title{Hierarchical Risk Parity}
 \usage{
-HRP_Portfolio(covar, clustering.method = "single", graph = FALSE)
+HRP_Portfolio(covar, linkage = "single", graph = FALSE)
 }
 \arguments{
-\item{covar}{Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into distance matrix.}
+\item{covar}{Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into a distance matrix.}
 
-\item{clustering.method}{Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "single".}
+\item{linkage}{Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "single".}
 
-\item{graph}{To plot de dendogram set this value to TRUE. By default this value is equal to FALSE.}
+\item{graph}{To plot de dendrogram set this value to TRUE. By default this value is equal to FALSE.}
 }
 \value{
 portfolio weights
@@ -21,7 +21,7 @@ portfolio weights
 Performs the Hierarchical Risk Parity portfolio proposed strategy by De Prado (2016). Several linkage methods for the hierarchical clustering can be used, by default the "single" linkage is used.
 }
 \examples{
-covar <- cov(daily_returns)
+covar <- cov(mldp_returns)
 HRP_Portfolio(covar)
 }
 \references{
