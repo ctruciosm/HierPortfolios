@@ -1,6 +1,6 @@
 # HierPorfolios
 
-This first release is of this R package available on CRAN. You can report any bug as an issue.
+This first release is of this R package is already available on CRAN.
 
 Three hierarchical portfolio allocation strategies are implemented, namely:
 
