@@ -1,4 +1,4 @@
-# HierPorfolios
+# HierPortfolios
 
 This first release is of this R package is already available on CRAN.
 

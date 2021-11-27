@@ -6,7 +6,7 @@
 #' @param linkage Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "single".
 #' @param graph To plot de dendrogram set this value to TRUE. By default this value is equal to FALSE.
 #' @return portfolio weights
-#' @seealso \code{HCAA_porfolio}
+#' @seealso \code{HCAA_Portfolio}
 #' @references De Prado, Marcos Lopez. "Building diversified portfolios that outperform out of sample." The Journal of Portfolio Management 42.4 (2016): 59-69.
 #' @aliases HRP_Portfolio
 #' @keywords HRP

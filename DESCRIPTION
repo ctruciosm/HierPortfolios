@@ -1,7 +1,7 @@
-Package: HierPorfolios
+Package: HierPortfolios
 Type: Package
 Title: Hierarchical Clustering-Based Portfolio Allocation Strategies
-Version: 0.1.0
+Version: 0.2.0
 Author: Carlos Trucios
 Maintainer: Carlos Trucios <ctrucios@gmail.com>
 Description: Machine learning portfolio allocation strategies based on hierarchical clustering methods. 
@@ -9,11 +9,13 @@ Description: Machine learning portfolio allocation strategies based on hierarchi
   Hierarchical risk parity (De Prado, 2016) <DOI: 10.3905/jpm.2016.42.4.059> and
   Hierarchical clustering-based asset allocation (Raffinot, 2017) 
   <DOI: 10.3905/jpm.2018.44.2.089>.
+  Hierarchical equal risk contribution portfolio (Raffinot, 2018)
+  <DOI: 10.2139/ssrn.3237540>.
 License: GPL-2
 Depends: R (>= 3.6.0)
-Imports: fastcluster, cluster, RiskPortfolios
+Imports: fastcluster, cluster
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
-URL: https://github.com/ctruciosm/HierPorfolios
-BugReports: https://github.com/ctruciosm/HierPorfolios/issues
+URL: https://github.com/ctruciosm/HierPortfolios
+BugReports: https://github.com/ctruciosm/HierPortfolios/issues
