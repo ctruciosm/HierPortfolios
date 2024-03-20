@@ -7,7 +7,7 @@
 #' @param graph To plot de dendrogram set this value to TRUE. By default this value is equal to FALSE.
 #' @param clusters Numbers of clusters. If NULL (default), the gap index is applied.
 #' @return portfolio weights.
-#' @seealso \code{HRP_Portfolio}
+#' @seealso \code{HRP_Portfolio}, \code{HERC_Portfolio} and \code{DHRP_Portfolio}
 #' @references Raffinot, Thomas. "Hierarchical clustering-based asset allocation." The Journal of Portfolio Management 44.2 (2017): 89-99.
 #' @references Tibshirani, Robert, Guenther Walther, and Trevor Hastie. "Estimating the number of clusters in a data set via the gap statistic." Journal of the Royal Statistical Society: Series B (Statistical Methodology) 63.2 (2001): 411-423.
 #' @aliases HCAA_Portfolio
@@ -15,6 +15,7 @@
 #' @examples
 #' covar <- cov(daily_returns)
 #' HCAA_Portfolio(covar)
+#' @author Carlos Trucios
 #' @export
 HCAA_Portfolio = function(covar, linkage = "ward", graph = FALSE, clusters = NULL) {
   if (linkage %in% c("single", "complete", "average", "ward")) {

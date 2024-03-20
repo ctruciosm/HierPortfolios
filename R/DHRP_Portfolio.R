@@ -6,13 +6,14 @@
 #' @param graph To plot de dendrogram set this value to TRUE. By default this value is equal to FALSE.
 #' @param tau Parameter to evaluate asset similarity at the cluster edges. Default value is 1.
 #' @return portfolio weights
-#' @seealso \code{HCAA_Portfolio} \code{HRP_Portfolio} \code{HERC_Portfolio}
+#' @seealso \code{HCAA_Portfolio}, \code{HRP_Portfolio} and \code{HERC_Portfolio}
 #' @references Pfitzinger, J., and Katzke, N. A constrained hierarchical risk parity algorithm with cluster-based capital allocation (2019). Working Paper.
 #' @aliases DHRP_Portfolio
 #' @keywords DHRP
 #' @examples
 #' covar <- cov(mldp_returns)
 #' DHRP_Portfolio(covar)
+#' @author Carlos Trucios and Moon Jun Kwon
 #' @export
 DHRP_Portfolio = function(covar, graph = FALSE, tau = 1, UB = NULL, LB = NULL) {
 

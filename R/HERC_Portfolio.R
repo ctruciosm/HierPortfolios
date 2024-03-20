@@ -7,7 +7,7 @@
 #' @param graph To plot de dendrogram set this value to TRUE. By default this value is equal to FALSE.
 #' @param clusters Numbers of clusters. If NULL (default), the gap index is applied.
 #' @return portfolio weights.
-#' @seealso \code{HRP_Portfolio} and \code{HCAA_Portfolio}
+#' @seealso \code{HRP_Portfolio}, \code{HCAA_Portfolio} and \code{DHRP_Portfolio}
 #' @references Raffinot, Thomas. "The hierarchical equal risk contribution portfolio." Available at SSRN 3237540 (2018).
 #' @references Tibshirani, Robert, Guenther Walther, and Trevor Hastie. "Estimating the number of clusters in a data set via the gap statistic." Journal of the Royal Statistical Society: Series B (Statistical Methodology) 63.2 (2001): 411-423.
 #' @aliases HERC_Portfolio
@@ -17,7 +17,6 @@
 #' HERC_Portfolio(covar)
 #' @author Carlos Trucios and Moon Jun Kwon
 #' @export
-
 HERC_Portfolio = function(covar, linkage = "ward", graph = FALSE, clusters = NULL) {
   if (linkage %in% c("single", "complete", "average", "ward")) {
     if (linkage == "ward") {
