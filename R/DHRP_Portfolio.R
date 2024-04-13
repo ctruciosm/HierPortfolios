@@ -5,6 +5,8 @@
 #' @param covar Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into a distance matrix.
 #' @param graph To plot de dendrogram set this value to TRUE. By default this value is equal to FALSE.
 #' @param tau Parameter to evaluate asset similarity at the cluster edges. Default value is 1.
+#' @param UB Upper bound for weights. By default this value is equal to NULL
+#' @param LB Lower bound for weights. By default this value is equal to NULL
 #' @return portfolio weights
 #' @seealso \code{HCAA_Portfolio}, \code{HRP_Portfolio} and \code{HERC_Portfolio}
 #' @references Pfitzinger, J., and Katzke, N. A constrained hierarchical risk parity algorithm with cluster-based capital allocation (2019). Working Paper.
@@ -17,16 +19,13 @@
 #' @export
 DHRP_Portfolio = function(covar, graph = FALSE, tau = 1, UB = NULL, LB = NULL) {
 
-  # https://github.com/jpfitzinger/ClusterPortfolios/blob/master/R/HRP.R
   if (is.null(UB)) UB <- rep(1, nrow(covar))
   if (is.null(LB)) LB <- rep(0, nrow(covar))
   # Stage 1: Tree clustering
   corre <- stats::cov2cor(covar)
   distance <- sqrt(0.5 * (1 - corre))
   # Stage 2: Divisive clustering
-  #distmat <- stats::dist(corre, method = "euclidean", diag = TRUE, upper = TRUE, p = 2) # original
   distmat <- stats::dist(distance, method = "euclidean", diag = TRUE, upper = TRUE, p = 2)
-  #clustering <-  cluster::agnes(distmat)
   clustering <- cluster::diana(distmat)
   clusters_order <- clustering$order
   clusters_height <- clustering$height
@@ -50,8 +49,8 @@ DHRP_Portfolio = function(covar, graph = FALSE, tau = 1, UB = NULL, LB = NULL) {
       alpha <- as.numeric(1 - variance_clustera/(variance_clustera + variance_clusterb))
       v_alpha <- c(alpha, 1 - alpha)
 
-      LBsub <- c(sum(LB[indexa]), sum(LB[indexb])) / c(prod(weights[indexa]), prod(weights[indexb])) # prod(weights[indexa])
-      UBsub <- c(sum(UB[indexa]), sum(UB[indexb])) / c(prod(weights[indexa]), prod(weights[indexb])) # prod(weights[indexb])
+      LBsub <- c(sum(LB[indexa]), sum(LB[indexb])) / c(prod(weights[indexa]), prod(weights[indexb]))
+      UBsub <- c(sum(UB[indexa]), sum(UB[indexb])) / c(prod(weights[indexa]), prod(weights[indexb]))
       maxit <- 100
       niter <- 0
       while (any(v_alpha > UBsub | v_alpha < LBsub) && niter < maxit) {
