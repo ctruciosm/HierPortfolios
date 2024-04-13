@@ -31,6 +31,9 @@ Raffinot, Thomas. "Hierarchical clustering-based asset allocation." The Journal 
 Tibshirani, Robert, Guenther Walther, and Trevor Hastie. "Estimating the number of clusters in a data set via the gap statistic." Journal of the Royal Statistical Society: Series B (Statistical Methodology) 63.2 (2001): 411-423.
 }
 \seealso{
-\code{HRP_Portfolio}
+\code{HRP_Portfolio}, \code{HERC_Portfolio} and \code{DHRP_Portfolio}
+}
+\author{
+Carlos Trucios
 }
 \keyword{HCAA}

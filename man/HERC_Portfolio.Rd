@@ -28,11 +28,12 @@ HERC_Portfolio(covar)
 \references{
 Raffinot, Thomas. "The hierarchical equal risk contribution portfolio." Available at SSRN 3237540 (2018).
 
-Sjostrand, Daniel, and Nima Behnejad. "Exploration of Hierarchical Clustering in Long-Only Risk-Based Portfolio Optimization." Master Thesis, Copenhagen Business School (2020).
-
 Tibshirani, Robert, Guenther Walther, and Trevor Hastie. "Estimating the number of clusters in a data set via the gap statistic." Journal of the Royal Statistical Society: Series B (Statistical Methodology) 63.2 (2001): 411-423.
 }
 \seealso{
-\code{HRP_Portfolio} and \code{HCAA_Portfolio}
+\code{HRP_Portfolio}, \code{HCAA_Portfolio} and \code{DHRP_Portfolio}
+}
+\author{
+Carlos Trucios and Moon Jun Kwon
 }
 \keyword{HERC}

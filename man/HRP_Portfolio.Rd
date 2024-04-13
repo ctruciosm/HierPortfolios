@@ -27,6 +27,9 @@ HRP_Portfolio(covar)
 De Prado, Marcos Lopez. "Building diversified portfolios that outperform out of sample." The Journal of Portfolio Management 42.4 (2016): 59-69.
 }
 \seealso{
-\code{HCAA_Portfolio}
+\code{HCAA_Portfolio}, \code{HERC_Portfolio} and \code{DHRP_Portfolio}
+}
+\author{
+Carlos Trucios
 }
 \keyword{HRP}
