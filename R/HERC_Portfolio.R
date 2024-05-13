@@ -47,8 +47,13 @@ HERC_Portfolio = function(covar, linkage = "ward", graph = FALSE, clusters = NUL
   assets_in_cluster <- elements_in_cluster[, n_clusters - 1]
   for (i in 1:n_clusters) {
     index_assets_in_cluster <- which(assets_in_cluster == i)
-    w[index_assets_in_cluster] <- (1/diag(covar[index_assets_in_cluster, index_assets_in_cluster])) / sum(1/diag(covar[index_assets_in_cluster, index_assets_in_cluster]))
-    risk_in_cluster[index_assets_in_cluster[1], n_clusters] <- w[index_assets_in_cluster] %*% covar[index_assets_in_cluster, index_assets_in_cluster] %*% w[index_assets_in_cluster]
+    if (length(index_assets_in_cluster) == 1) {
+      w[index_assets_in_cluster] <- 1
+      risk_in_cluster[index_assets_in_cluster[1], n_clusters] <- w[index_assets_in_cluster] * covar[index_assets_in_cluster, index_assets_in_cluster] * w[index_assets_in_cluster]
+    } else {
+      w[index_assets_in_cluster] <- (1/diag(covar[index_assets_in_cluster, index_assets_in_cluster])) / sum(1/diag(covar[index_assets_in_cluster, index_assets_in_cluster]))
+      risk_in_cluster[index_assets_in_cluster[1], n_clusters] <- w[index_assets_in_cluster] %*% covar[index_assets_in_cluster, index_assets_in_cluster] %*% w[index_assets_in_cluster]
+    }
   }
 
   for (i in (n_clusters - 1):min(2, (n_clusters - 1))) {
