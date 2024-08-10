@@ -1,10 +1,14 @@
 Package: HierPortfolios
 Type: Package
-Title: Hierarchical Clustering-Based Portfolio Allocation Strategies
-Version: 1.0.0
-Author: Carlos Trucios and Moon Jun Kwon
-Maintainer: Carlos Trucios <ctrucios@unicamp.br>
-Description: Machine learning portfolio allocation strategies based on hierarchical clustering methods. 
+Title: Hierarchical Risk Clustering Portfolio Allocation Strategies
+Version: 1.0.1
+Date: 2024-08-17
+Authors@R: c(
+  person(given = "Carlos", family = "Trucios", role = c("aut", "cre"), email = "ctrucios@unicamp.br", comment = c(ORCID = "0000-0001-8746-8877")),
+  person("Moon Jun Kwon", role = "aut"),
+  person("São Paulo Research Foundation (FAPESP), grant 2022/09122-0",  role = "fnd"),
+  person("Programa de Incentivo a Novos Docentes da UNICAMP (PIND), grant 2525/23",  role = "fnd"))
+Description: Machine learning hierarchical risk clustering portfolio allocation strategies. 
  The implemented methods are:
   Hierarchical risk parity (De Prado, 2016) <DOI: 10.3905/jpm.2016.42.4.059>.
   Hierarchical clustering-based asset allocation (Raffinot, 2017)  

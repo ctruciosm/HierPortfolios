@@ -21,7 +21,7 @@ DHRP_Portfolio(covar, graph = FALSE, tau = 1, UB = NULL, LB = NULL)
 portfolio weights
 }
 \description{
-Performs the Constrained Hierarchical Risk Parity portfolio strategy proposed  by Pfitzinger and Katzke (2019).
+Performs the Constrained Hierarchical Risk Parity portfolio strategy proposed by Pfitzinger and Katzke (2019).
 }
 \examples{
 covar <- cov(mldp_returns)

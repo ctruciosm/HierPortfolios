@@ -1,6 +1,6 @@
 #' Constrained Hierarchical Risk Parity
 #'
-#' Performs the Constrained Hierarchical Risk Parity portfolio strategy proposed  by Pfitzinger and Katzke (2019).
+#' Performs the Constrained Hierarchical Risk Parity portfolio strategy proposed by Pfitzinger and Katzke (2019).
 #'
 #' @param covar Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into a distance matrix.
 #' @param graph To plot de dendrogram set this value to TRUE. By default this value is equal to FALSE.
