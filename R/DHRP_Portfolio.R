@@ -53,7 +53,7 @@ DHRP_Portfolio = function(covar, graph = FALSE, tau = 1, UB = NULL, LB = NULL) {
       UBsub <- c(sum(UB[indexa]), sum(UB[indexb])) / c(prod(weights[indexa]), prod(weights[indexb]))
       maxit <- 100
       niter <- 0
-      while (any(v_alpha > UBsub | v_alpha < LBsub) && niter < maxit) {
+      while (any(v_alpha > UBsub | v_alpha < LBsub, na.rm = TRUE) && niter < maxit) {
         alpha_tilde <-  sapply(sapply(v_alpha, min, UBsub), max, LBsub)
         aux <- which(alpha_tilde != UBsub & alpha_tilde != LBsub)
         alpha_tilde[aux] <- alpha_tilde[aux] + (1 - sum(alpha_tilde)) * alpha_tilde[aux] / sum(alpha_tilde[aux])

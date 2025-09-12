@@ -98,7 +98,7 @@ HERC_Portfolio = function(covar, linkage = "ward", graph = FALSE, clusters = NUL
   if (graph) plot(clustering, xlab = "", ylab = "", main = "Cluster Dendrogram - HERC")
   weights <- data.frame(weights)
   row.names(weights) <- colnames(covar)
-  return(weights)
+  return(list(weights, n_clusters))
 }
 
 

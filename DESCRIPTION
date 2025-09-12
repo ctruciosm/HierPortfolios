@@ -1,8 +1,8 @@
 Package: HierPortfolios
 Type: Package
 Title: Hierarchical Risk Clustering Portfolio Allocation Strategies
-Version: 1.0.1
-Date: 2024-08-17
+Version: 1.0.2
+Date: 2025-09-12
 Authors@R: c(
   person(given = "Carlos", family = "Trucios", role = c("aut", "cre"), email = "ctrucios@unicamp.br", comment = c(ORCID = "0000-0001-8746-8877")),
   person("Moon Jun Kwon", role = "aut"),
@@ -22,6 +22,6 @@ Depends: R (>= 3.6.0)
 Imports: fastcluster, cluster
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.2
 URL: https://github.com/ctruciosm/HierPortfolios
 BugReports: https://github.com/ctruciosm/HierPortfolios/issues
