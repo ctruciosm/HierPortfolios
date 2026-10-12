@@ -8,6 +8,7 @@ Four hierarchical portfolio allocation strategies are implemented, namely:
 - Hierarchical Clustering-Based Asset Allocation (Raffinot, 2017)
 - Hierarchical Equal Risk Controbution (Raffinot, 2018) 
 - A Constrained Hierarchical Risk Parity Algorithm with Cluster-based Capital Allocation (Pfitzingera and Katzke, 2019)
+- Hierarchical Risk Budgeting (Koumou, 2024)
 
 Each strategy was implemented in an easy-to-use function: `HRP_Portfolio`, `HACC_Portfolio`, `HERC_Portfolio` and `DHRP_Portfolio`.
 
@@ -17,7 +18,7 @@ Each strategy was implemented in an easy-to-use function: `HRP_Portfolio`, `HACC
 - Raffinot, T. (2017). Hierarchical clustering-based asset allocation. _The Journal of Portfolio Management_, 44(2), 89-99.
 - Raffinot, T. (2018). The hierarchical equal risk contribution portfolio. _Available at SSRN_ 3237540.
 - Pfitzingera, J. and Katzke, N. (2019). A Constrained Hierarchical Risk Parity Algorithm with Cluster-based Capital Allocation. _Available at_  \url{https://www.ekon.sun.ac.za/wpapers/2019/wp142019/wp142019.pdf}
-
+- Koumou, G. B. (2024). Hierarchical Risk Budgeting. _The Journal of Financial Data Science_,  6(2), 35-53.
 
 # Installation
 
