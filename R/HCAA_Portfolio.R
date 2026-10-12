@@ -2,12 +2,12 @@
 #'
 #' Performs the Hierarchical Clustering-Based Asset Allocation strategy proposed by Raffinot (2017). Several linkage methods for the hierarchical clustering can be used, by default the "ward" linkage is used. The numbers of clusters is selected using the Gap index of Tibshirani et al. (2001).
 #'
-#' @param covar Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into a distance matrix.
+#' @param covar Covariance matrix of returns. The covariance matrix is converted into a correlation matrix, which is then used to construct the distance matrix for hierarchical clustering.
 #' @param linkage Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "ward".
 #' @param graph To plot de dendrogram set this value to TRUE. By default this value is equal to FALSE.
 #' @param clusters Numbers of clusters. If NULL (default), the gap index is applied.
 #' @return portfolio weights.
-#' @seealso \code{HRP_Portfolio}, \code{HERC_Portfolio} and \code{DHRP_Portfolio}
+#' @seealso \code{HRP_Portfolio}, \code{HERC_Portfolio}, \code{HRB_Portfolio} and \code{DHRP_Portfolio}
 #' @references Raffinot, Thomas. "Hierarchical clustering-based asset allocation." The Journal of Portfolio Management 44.2 (2017): 89-99.
 #' @references Tibshirani, Robert, Guenther Walther, and Trevor Hastie. "Estimating the number of clusters in a data set via the gap statistic." Journal of the Royal Statistical Society: Series B (Statistical Methodology) 63.2 (2001): 411-423.
 #' @aliases HCAA_Portfolio

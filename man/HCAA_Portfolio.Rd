@@ -7,7 +7,7 @@
 HCAA_Portfolio(covar, linkage = "ward", graph = FALSE, clusters = NULL)
 }
 \arguments{
-\item{covar}{Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into a distance matrix.}
+\item{covar}{Covariance matrix of returns. The covariance matrix is converted into a correlation matrix, which is then used to construct the distance matrix for hierarchical clustering.}
 
 \item{linkage}{Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "ward".}
 
@@ -31,7 +31,7 @@ Raffinot, Thomas. "Hierarchical clustering-based asset allocation." The Journal 
 Tibshirani, Robert, Guenther Walther, and Trevor Hastie. "Estimating the number of clusters in a data set via the gap statistic." Journal of the Royal Statistical Society: Series B (Statistical Methodology) 63.2 (2001): 411-423.
 }
 \seealso{
-\code{HRP_Portfolio}, \code{HERC_Portfolio} and \code{DHRP_Portfolio}
+\code{HRP_Portfolio}, \code{HERC_Portfolio}, \code{HRB_Portfolio} and \code{DHRP_Portfolio}
 }
 \author{
 Carlos Trucios

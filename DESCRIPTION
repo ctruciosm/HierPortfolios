@@ -1,12 +1,12 @@
 Package: HierPortfolios
 Type: Package
 Title: Hierarchical Risk Clustering Portfolio Allocation Strategies
-Version: 1.0.2
-Date: 2025-09-12
+Version: 1.1.0
+Date: 2026-10-12
 Authors@R: c(
   person(given = "Carlos", family = "Trucios", role = c("aut", "cre"), email = "ctrucios@unicamp.br", comment = c(ORCID = "0000-0001-8746-8877")),
   person("Moon Jun Kwon", role = "aut"),
-  person("São Paulo Research Foundation (FAPESP), grant 2022/09122-0",  role = "fnd"),
+  person("São Paulo Research Foundation (FAPESP), grants 2022/09122-0, 2025/06131-7 and 2025/08502-2",  role = "fnd"),
   person("Programa de Incentivo a Novos Docentes da UNICAMP (PIND), grant 2525/23",  role = "fnd"))
 Description: Machine learning hierarchical risk clustering portfolio allocation strategies. 
  The implemented methods are:
@@ -17,9 +17,10 @@ Description: Machine learning hierarchical risk clustering portfolio allocation 
   <DOI: 10.2139/ssrn.3237540>.
   A Constrained Hierarchical Risk Parity Algorithm with Cluster-based Capital Allocation (Pfitzingera and Katzke, 2019)
   <https://www.ekon.sun.ac.za/wpapers/2019/wp142019/wp142019.pdf>.
+  Hierarchical Risk Budgeting (Koumou, 2024) <DOI: 10.3905/jfds.2024.1.156>.
 License: GPL-2
 Depends: R (>= 3.6.0)
-Imports: fastcluster, cluster
+Imports: fastcluster, cluster, CVXR
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2

@@ -7,7 +7,7 @@
 HRP_Portfolio(covar, linkage = "single", graph = FALSE)
 }
 \arguments{
-\item{covar}{Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into a distance matrix.}
+\item{covar}{Covariance matrix of returns. The covariance matrix is converted into a correlation matrix, which is then used to construct the distance matrix for hierarchical clustering.}
 
 \item{linkage}{Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "single".}
 
@@ -27,7 +27,7 @@ HRP_Portfolio(covar)
 De Prado, Marcos Lopez. "Building diversified portfolios that outperform out of sample." The Journal of Portfolio Management 42.4 (2016): 59-69.
 }
 \seealso{
-\code{HCAA_Portfolio}, \code{HERC_Portfolio} and \code{DHRP_Portfolio}
+\code{HCAA_Portfolio}, \code{HERC_Portfolio}, \code{DHRP_Portfolio} and \code{HRB_Portfolio}
 }
 \author{
 Carlos Trucios

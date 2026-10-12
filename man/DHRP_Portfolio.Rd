@@ -7,7 +7,7 @@
 DHRP_Portfolio(covar, graph = FALSE, tau = 1, UB = NULL, LB = NULL)
 }
 \arguments{
-\item{covar}{Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into a distance matrix.}
+\item{covar}{Covariance matrix of returns. The covariance matrix is converted into a correlation matrix, which is then used to construct the distance matrix for hierarchical clustering.}
 
 \item{graph}{To plot de dendrogram set this value to TRUE. By default this value is equal to FALSE.}
 
@@ -31,7 +31,7 @@ DHRP_Portfolio(covar)
 Pfitzinger, J., and Katzke, N. A constrained hierarchical risk parity algorithm with cluster-based capital allocation (2019). Working Paper.
 }
 \seealso{
-\code{HCAA_Portfolio}, \code{HRP_Portfolio} and \code{HERC_Portfolio}
+\code{HCAA_Portfolio}, \code{HRP_Portfolio}, \code{HRB_Portfolio} and \code{HERC_Portfolio}
 }
 \author{
 Carlos Trucios and Moon Jun Kwon

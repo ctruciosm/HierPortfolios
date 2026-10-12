@@ -2,13 +2,13 @@
 #'
 #' Performs the Constrained Hierarchical Risk Parity portfolio strategy proposed by Pfitzinger and Katzke (2019).
 #'
-#' @param covar Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into a distance matrix.
+#' @param covar Covariance matrix of returns. The covariance matrix is converted into a correlation matrix, which is then used to construct the distance matrix for hierarchical clustering.
 #' @param graph To plot de dendrogram set this value to TRUE. By default this value is equal to FALSE.
 #' @param tau Parameter to evaluate asset similarity at the cluster edges. Default value is 1.
 #' @param UB Upper bound for weights. By default this value is equal to NULL
 #' @param LB Lower bound for weights. By default this value is equal to NULL
 #' @return portfolio weights
-#' @seealso \code{HCAA_Portfolio}, \code{HRP_Portfolio} and \code{HERC_Portfolio}
+#' @seealso \code{HCAA_Portfolio}, \code{HRP_Portfolio}, \code{HRB_Portfolio} and \code{HERC_Portfolio}
 #' @references Pfitzinger, J., and Katzke, N. A constrained hierarchical risk parity algorithm with cluster-based capital allocation (2019). Working Paper.
 #' @aliases DHRP_Portfolio
 #' @keywords DHRP

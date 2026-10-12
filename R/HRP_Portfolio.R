@@ -2,11 +2,11 @@
 #'
 #' Performs the Hierarchical Risk Parity portfolio proposed strategy by De Prado (2016). Several linkage methods for the hierarchical clustering can be used, by default the "single" linkage is used.
 #'
-#' @param covar Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into a distance matrix.
+#' @param covar Covariance matrix of returns. The covariance matrix is converted into a correlation matrix, which is then used to construct the distance matrix for hierarchical clustering.
 #' @param linkage Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "single".
 #' @param graph To plot de dendrogram set this value to TRUE. By default this value is equal to FALSE.
 #' @return portfolio weights
-#' @seealso \code{HCAA_Portfolio}, \code{HERC_Portfolio} and \code{DHRP_Portfolio}
+#' @seealso \code{HCAA_Portfolio}, \code{HERC_Portfolio}, \code{DHRP_Portfolio} and \code{HRB_Portfolio}
 #' @references De Prado, Marcos Lopez. "Building diversified portfolios that outperform out of sample." The Journal of Portfolio Management 42.4 (2016): 59-69.
 #' @aliases HRP_Portfolio
 #' @keywords HRP

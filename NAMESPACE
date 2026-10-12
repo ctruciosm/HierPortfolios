@@ -3,4 +3,5 @@
 export(DHRP_Portfolio)
 export(HCAA_Portfolio)
 export(HERC_Portfolio)
+export(HRB_Portfolio)
 export(HRP_Portfolio)

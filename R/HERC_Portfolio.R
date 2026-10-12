@@ -2,12 +2,12 @@
 #'
 #' Performs the Hierarchical Equal Risk Contribution portfolio strategy proposed by Raffinot (2018). Several linkage methods for the hierarchical clustering can be used, by default the "ward" linkage is used. This function uses the variance as risk measure. The number of clusters is selected using the Gap index of Tibshirani et al. (2001). The implemenation follows Sjostrand and Nina (2020).
 #'
-#' @param covar Covariance matrix of returns. The covariance matrix will be transformed into correlation matrix and then into a distance matrix.
+#' @param covar Covariance matrix of returns. The covariance matrix is converted into a correlation matrix, which is then used to construct the distance matrix for hierarchical clustering.
 #' @param linkage Linkage method used in the hierarchical clustering. Allowed options are "single", "complete", "average" or "ward". Default option is "ward".
 #' @param graph To plot de dendrogram set this value to TRUE. By default this value is equal to FALSE.
 #' @param clusters Numbers of clusters. If NULL (default), the gap index is applied.
 #' @return portfolio weights.
-#' @seealso \code{HRP_Portfolio}, \code{HCAA_Portfolio} and \code{DHRP_Portfolio}
+#' @seealso \code{HRP_Portfolio}, \code{HCAA_Portfolio}, \code{HRB_Portfolio} and \code{DHRP_Portfolio}
 #' @references Raffinot, Thomas. "The hierarchical equal risk contribution portfolio." Available at SSRN 3237540 (2018).
 #' @references Tibshirani, Robert, Guenther Walther, and Trevor Hastie. "Estimating the number of clusters in a data set via the gap statistic." Journal of the Royal Statistical Society: Series B (Statistical Methodology) 63.2 (2001): 411-423.
 #' @aliases HERC_Portfolio
@@ -27,14 +27,13 @@ HERC_Portfolio = function(covar, linkage = "ward", graph = FALSE, clusters = NUL
   }
   # Stage 1: Tree clustering
   corre <- stats::cov2cor(covar)
-  distance <- sqrt(0.5 * (1 - corre))
-  euclidean_distance <- stats::dist(distance, method = "euclidean", diag = TRUE, upper = TRUE, p = 2)
+  distance <- stats::as.dist(sqrt(0.5 * (1 - corre)))
   n_cols <- ncol(corre)
   # Stage 2: Quasi-Diagonalisation
-  clustering <- fastcluster::hclust(euclidean_distance , method = linkage, members = NULL)
+  clustering <- fastcluster::hclust(distance, method = linkage, members = NULL)
   if (is.null(clusters)) {
     fun_clus_num <- function(x,k) list(cluster = stats::cutree(fastcluster::hclust(stats::as.dist(x) , method = linkage, members = NULL), k))
-    gap <- cluster::clusGap(as.matrix(euclidean_distance), FUN = fun_clus_num, K.max = floor(n_cols/2), B = 100)
+    gap <- cluster::clusGap(as.matrix(distance), FUN = fun_clus_num, K.max = floor(n_cols/2), B = 100)
     n_clusters <- cluster::maxSE(gap$Tab[,"gap"], gap$Tab[,"SE.sim"], method = "Tibs2001SEmax")
     n_clusters <- max(2, n_clusters)
   } else{
@@ -78,16 +77,14 @@ HERC_Portfolio = function(covar, linkage = "ward", graph = FALSE, clusters = NUL
     for (i in 2:(n_clusters - 1)) {
       groups <- unique(elements_in_cluster[, i - 1])
       for (j in 1:i) {
-        if (alpha[groups[j], n_clusters] == 0) {
-          index <- elements_in_cluster[, i - 1] == groups[j]
+        index <- elements_in_cluster[, i - 1] == groups[j]
+        if (alpha[which(index)[1], n_clusters] == 0) {
           if (length(unique(elements_in_cluster[index, i])) > 1) {
             sub_groups <- unique(elements_in_cluster[index, i])
             indexa <- elements_in_cluster[ , i] == sub_groups[1]
             indexb <- elements_in_cluster[ , i] == sub_groups[2]
             alpha[indexa, i] = 1 - sum(risk_in_cluster[indexa, i])/sum(risk_in_cluster[index, i])
             alpha[indexb, i] = 1 - sum(risk_in_cluster[indexb, i])/sum(risk_in_cluster[index, i])
-          } else {
-            alpha[index, n_clusters ] <- 1
           }
         }
       }
@@ -100,6 +97,5 @@ HERC_Portfolio = function(covar, linkage = "ward", graph = FALSE, clusters = NUL
   row.names(weights) <- colnames(covar)
   return(list(weights, n_clusters))
 }
-
 
 
